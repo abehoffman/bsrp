@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from utils import (
+from .utils import (
     SafetyException,
     _calculate_M,
     _calculate_x,

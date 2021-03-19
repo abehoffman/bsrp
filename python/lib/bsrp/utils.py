@@ -2,7 +2,7 @@ import hashlib
 import os
 from typing import Any
 
-from constants import SRP_GENERATOR, SRP_PRIME
+from .constants import SRP_GENERATOR, SRP_PRIME
 
 BYTE_ORDER = "big"
 

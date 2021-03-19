@@ -18,8 +18,8 @@ setuptools.setup(
         "pytest",
         "pytest-cov",
     ],
-    packages=setuptools.find_namespace_packages("lib"),
     package_dir={"": "lib"},
+    packages=["bsrp"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
