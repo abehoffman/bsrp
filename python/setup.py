@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bsrp",
-    version="1.0",
+    version="1.0.1",
     author="Abe Hoffman",
     author_email="abehoffman@me.com",
     license='MIT',
