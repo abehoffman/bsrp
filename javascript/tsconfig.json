@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "outDir": "dist",
+    "baseUrl": "./lib",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "declaration": true
+  },
+  "include": ["lib/**/*"],
+  "exclude": ["node_modules", "dist", "bin"]
+}
