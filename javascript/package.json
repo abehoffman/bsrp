@@ -17,7 +17,8 @@
     "salt"
   ],
   "scripts": {
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "prepublish": "tsc"
   },
   "jest": {},
   "devDependencies": {
