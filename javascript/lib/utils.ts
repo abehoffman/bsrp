@@ -1,7 +1,10 @@
 import { Sha256 } from "@aws-crypto/sha256-browser";
 import { BigInteger } from "jsbn";
 
-import { bigEndianBytesToBigInteger, bigIntegerToBigEndianBytes } from "./conversions";
+import {
+  bigEndianBytesToBigInteger,
+  bigIntegerToBigEndianBytes,
+} from "./conversions";
 
 export const generateRandomBytes = (length: number): Uint8Array => {
   const buffer = new Uint8Array(length);
@@ -45,7 +48,7 @@ export type HashInput = Input | string;
 export const hash = async (...args: Array<HashInput>): Promise<Uint8Array> => {
   const hash = new Sha256();
 
-  args.forEach((arg: Input) => {
+  args.forEach((arg: HashInput) => {
     if (typeof arg === "string") {
       hash.update(arg, "utf8");
     } else {
@@ -58,7 +61,11 @@ export const hash = async (...args: Array<HashInput>): Promise<Uint8Array> => {
   return digestHash;
 };
 
-export const calculateX = async (salt: BigInteger, identity: string, password: string): Promise<BigInteger> => {
+export const calculateX = async (
+  salt: BigInteger,
+  identity: string,
+  password: string
+): Promise<BigInteger> => {
   const preSalt = await hash(identity, ":", password);
   const postSalt = await hash(salt, preSalt);
 
@@ -72,13 +79,15 @@ export const calculateM = async (
   salt: BigInteger,
   A: BigInteger,
   B: BigInteger,
-  sessionKey: Uint8Array,
+  sessionKey: Uint8Array
 ): Promise<Uint8Array> => {
   const hashGenerator = await hash(generator);
   const hashPrime = await hash(prime);
   const hashIdentity = await hash(identity);
 
-  const xorGeneratorPrime = toBigInteger(hashGenerator).xor(toBigInteger(hashPrime));
+  const xorGeneratorPrime = toBigInteger(hashGenerator).xor(
+    toBigInteger(hashPrime)
+  );
 
   return hash(xorGeneratorPrime, hashIdentity, salt, A, B, sessionKey);
 };
