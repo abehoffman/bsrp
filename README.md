@@ -24,5 +24,5 @@ This implementation of the SRP-6a protocol requires just two API calls:
 A B-first implementation of the SRP protocol reveals the public value B to the client before receiving the client's public value A and message. This is slightly different than Tom's [pysrp](https://github.com/cocagne/pysrp), allowing for a different data flow. This flow is optimized for cloud-native APIs.
 
 
-# python
-# javascript
+Jump to [python](https://github.com/abehoffman/bsrp/tree/main/python#readme) documentation.
+Jump to [javascript](https://github.com/abehoffman/bsrp/tree/main/javascript#readme) documentation.
