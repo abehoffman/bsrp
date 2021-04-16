@@ -4,8 +4,8 @@
   "description": "Secure Remote Password Protocol (SRP-6a) Implementation",
   "repository": "https://github.com/abehoffman/bsrp",
   "homepage": "https://github.com/abehoffman/bsrp/javascript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "Abe Hoffman",
   "license": "MIT",
   "keywords": [
