@@ -7,7 +7,6 @@
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "noEmit": true,
     "outDir": "dist",
     "baseUrl": "./lib",
     "paths": {
