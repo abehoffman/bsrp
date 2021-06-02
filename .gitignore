@@ -3,6 +3,7 @@ __pycache__
 *.egg-info
 .cache
 .coverage
+*.swp
 virtualenv/
 build/
 dist/

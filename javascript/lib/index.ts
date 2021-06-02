@@ -10,6 +10,8 @@ import {
 } from "./utils";
 import { generator, prime } from "./constants";
 
+export { toBigInteger };
+
 export interface APair {
   ephemeralA: BigInteger;
   publicA: BigInteger;
