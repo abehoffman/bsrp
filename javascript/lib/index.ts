@@ -8,6 +8,7 @@ import {
   calculateM,
   calculateX,
 } from "./utils";
+
 import { generator, prime } from "./constants";
 
 export { toBigInteger };
