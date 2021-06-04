@@ -1,17 +1,21 @@
 import { BigInteger } from "jsbn";
 
-import {
+import * as utils from "./utils";
+
+import { generator, prime } from "./constants";
+
+const {
   generateRandomBytes,
   hash,
   toBigInteger,
   pad,
   calculateM,
   calculateX,
-} from "./utils";
-
-import { generator, prime } from "./constants";
+} = utils;
 
 export { toBigInteger };
+
+export { utils };
 
 export interface APair {
   ephemeralA: BigInteger;
