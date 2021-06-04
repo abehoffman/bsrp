@@ -1,6 +1,6 @@
 {
   "name": "bsrp",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Secure Remote Password Protocol (SRP-6a) Implementation",
   "repository": "https://github.com/abehoffman/bsrp",
   "homepage": "https://github.com/abehoffman/bsrp/javascript",
