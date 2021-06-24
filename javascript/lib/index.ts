@@ -1,8 +1,7 @@
 import { BigInteger } from "jsbn";
 
 import * as utils from "./utils";
-
-import { generator, prime } from "./constants";
+import * as constants from "./constants";
 
 const {
   generateRandomBytes,
@@ -12,6 +11,10 @@ const {
   calculateM,
   calculateX,
 } = utils;
+
+const { generator, prime } = constants;
+
+export { constants };
 
 export { toBigInteger };
 
