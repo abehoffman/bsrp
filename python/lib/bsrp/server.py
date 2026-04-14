@@ -119,6 +119,9 @@ def verify_session(
     # Precalculate scrambler
     u = _to_int(_Hash(padded_A, padded_B))
 
+    if u == 0:
+        raise SafetyException("Scrambler u is 0. Auth Failed.")
+
     # Calculate shared session key
     # S = (A*(v^u))^b
     S = pow(A * pow(verifier, u, prime), b, prime)

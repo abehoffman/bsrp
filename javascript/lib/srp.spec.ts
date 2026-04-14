@@ -1,6 +1,7 @@
 import { BigInteger } from "jsbn";
 import { APair, generateAPair, processChallenge, verifySession } from "./index";
 import crypto from "crypto";
+import { hash, toBigInteger } from "./utils";
 
 Object.defineProperty(global, "crypto", {
   value: {
@@ -15,6 +16,31 @@ test("should generate distinct ephemeral A pairs on subsequent calls", () => {
 
   expect(firstAPair.ephemeralA.equals(secondAPair.ephemeralA)).toBeFalsy();
   expect(firstAPair.publicA.equals(secondAPair.publicA)).toBeFalsy();
+});
+
+test("should preserve leading zero hash bytes when verifying the server proof", async () => {
+  const publicA = new BigInteger("123", 10);
+  const message = new BigInteger("1", 10);
+  const sessionKey = new BigInteger("2", 10);
+
+  const paddedMessage = new Uint8Array(32);
+  paddedMessage[31] = 1;
+
+  const paddedSessionKey = new Uint8Array(32);
+  paddedSessionKey[31] = 2;
+
+  const expectedHAMK = toBigInteger(
+    await hash(publicA, paddedMessage, paddedSessionKey)
+  );
+
+  const verifiedHAMK = await verifySession(
+    publicA,
+    message,
+    sessionKey,
+    expectedHAMK
+  );
+
+  expect(verifiedHAMK?.equals(expectedHAMK)).toBeTruthy();
 });
 
 /*

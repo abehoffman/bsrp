@@ -45,6 +45,8 @@ export const pad = (input: Input, length: number): Uint8Array => {
 
 export type HashInput = Input | string;
 
+export const SHA256_BYTE_LENGTH = 32;
+
 export const hash = async (...args: Array<HashInput>): Promise<Uint8Array> => {
   const hash = new Sha256();
 
@@ -59,6 +61,10 @@ export const hash = async (...args: Array<HashInput>): Promise<Uint8Array> => {
   const digestHash = await hash.digest();
 
   return digestHash;
+};
+
+export const toHashBytes = (input: Input): Uint8Array => {
+  return pad(input, SHA256_BYTE_LENGTH);
 };
 
 export const calculateX = async (
@@ -85,9 +91,11 @@ export const calculateM = async (
   const hashPrime = await hash(prime);
   const hashIdentity = await hash(identity);
 
-  const xorGeneratorPrime = toBigInteger(hashGenerator).xor(
-    toBigInteger(hashPrime)
-  );
+  const xorGeneratorPrime = new Uint8Array(SHA256_BYTE_LENGTH);
+
+  for (let i = 0; i < SHA256_BYTE_LENGTH; i++) {
+    xorGeneratorPrime[i] = hashGenerator[i] ^ hashPrime[i];
+  }
 
   return hash(xorGeneratorPrime, hashIdentity, salt, A, B, sessionKey);
 };
