@@ -17,7 +17,7 @@
     "salt"
   ],
   "scripts": {
-    "test": "yarn jest",
+    "test": "jest",
     "prepublish": "tsc"
   },
   "jest": {},

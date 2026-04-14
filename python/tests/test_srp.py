@@ -12,7 +12,7 @@ from bsrp.server import (
     generate_salt_and_verifier,
     verify_session as server_verify_session,
 )
-from bsrp.utils import SafetyException
+from bsrp.utils import SafetyException, _get_srp_prime
 
 
 def test_generate_salt_and_verifier():
@@ -86,8 +86,21 @@ def test_login_auth_failed_B_is_zero():
     a, A = generate_a_pair()
 
     with pytest.raises(SafetyException):
-        B=0
+        B = 0
         M, session_key = process_challenge(identity, password, salt, a, A, B)
+
+
+def test_login_auth_failed_B_mod_prime_is_zero():
+
+    identity = "test"
+    password = "#yoloswag"
+
+    salt, _ = generate_salt_and_verifier(identity, password)
+    a, A = generate_a_pair()
+    B = _get_srp_prime()
+
+    with pytest.raises(SafetyException):
+        process_challenge(identity, password, salt, a, A, B)
 
 
 

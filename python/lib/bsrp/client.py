@@ -84,8 +84,8 @@ def process_challenge(
     k = _to_int(_Hash(prime, padded_generator))
 
     # SRP-6a safety checks
-    if B == 0:
-        raise SafetyException("Public value B is 0. Auth Failed.")
+    if B % prime == 0:
+        raise SafetyException("B mod prime is 0. Auth Failed.")
 
     if u == 0:
         raise SafetyException("Scrambler u is 0. Auth Failed.")

@@ -8,6 +8,7 @@ const {
   hash,
   toBigInteger,
   pad,
+  toHashBytes,
   calculateM,
   calculateX,
 } = utils;
@@ -99,7 +100,11 @@ export const verifySession = async (
   sessionKey: BigInteger,
   serverHAMK: BigInteger
 ): Promise<BigInteger | null> => {
-  const clientHAMK = await hash(publicA, message, sessionKey);
+  const clientHAMK = await hash(
+    publicA,
+    toHashBytes(message),
+    toHashBytes(sessionKey)
+  );
 
   if (!toBigInteger(clientHAMK).equals(serverHAMK)) {
     return null;
