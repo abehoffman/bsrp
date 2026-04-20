@@ -11,8 +11,8 @@ The kind lads over at 1Password provided the following rationale for using SRP:
 - authenticate with more than just a binary “yes” or “no”. You actually end up with an encryption key.
 
 This library provides a seamless solution for implementing SRP with a python/javascript tech stack.
-Jump to [Python](#python) documentation.
-Jump to [Javascript](#javascript) documentation.
+Jump to [Python](https://github.com/abehoffman/bsrp/tree/main/python#readme) documentation.
+Jump to [Javascript](https://github.com/abehoffman/bsrp/tree/main/javascript#readme) documentation.
 
 
 ## B First SRP Flow
